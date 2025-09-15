@@ -30,5 +30,5 @@ Your goal is to **decode scrambled text** and guess the original word. The game 
 
 ---
 
-## 📂 Project Structure
+
 
