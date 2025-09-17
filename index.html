@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Word Puzzle - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Word Puzzle Login</h1>
+    <p>Enter your username to play</p>
+
+    <input type="text" id="username" placeholder="Enter username">
+    <button onclick="loginUser()">Login</button>
+
+    <p id="loginMessage"></p>
+  </div>
+  
+
+  <script>
+    function loginUser() {
+      const username = document.getElementById("username").value.trim();
+
+      if (!username) {
+        document.getElementById("loginMessage").innerText = "⚠️ Please enter a username";
+        return;
+      }
+
+      // Store active user
+      localStorage.setItem("activeUser", username);
+
+      // Redirect to game
+      window.location.href = "game.html";
+    }
+  </script>
+</body>
+</html>

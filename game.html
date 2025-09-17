@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Word Puzzle Game</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+      <h1>🎮 Word Puzzle</h1>
+
+      <p id="scrambledWord">---</p>
+      <input type="text" id="guessInput" placeholder="Your guess">
+      <button onclick="checkGuess()">Submit</button>
+
+      <p id="resultMessage"></p>
+
+      <h3>👤 Player: <span id="playerName"></span></h3>
+      <h3>⭐ Score: <span id="score">0</span></h3>
+
+      <button onclick="logout()">Logout</button>
+
+  </div>
+
+  <script>
+    const words = ["apple", "banana", "orange", "grape", "mango"];
+    let currentWord = "";
+    let score = 0;
+
+    // Load player name
+    document.getElementById("playerName").innerText = localStorage.getItem("activeUser") || "Guest";
+
+    function scramble(word) {
+      return word.split("").sort(() => Math.random() - 0.5).join("");
+    }
+
+    function newWord() {
+      currentWord = words[Math.floor(Math.random() * words.length)];
+      document.getElementById("scrambledWord").innerText = scramble(currentWord);
+      document.getElementById("guessInput").value = "";
+      document.getElementById("resultMessage").innerText = "";
+    }
+
+    function checkGuess() {
+      const guess = document.getElementById("guessInput").value.trim().toLowerCase();
+      if (guess === currentWord) {
+        score++;
+        document.getElementById("score").innerText = score;
+        document.getElementById("resultMessage").innerText = "✅ Correct!";
+      } else {
+        document.getElementById("resultMessage").innerText = "❌ Wrong! Try again.";
+      }
+      newWord();
+    }
+
+    function logout() {
+      localStorage.removeItem("activeUser");
+      window.location.href = "index.html";
+    }
+
+    // Start game
+    newWord();
+  </script>
+</body>
+</html>
