@@ -1,34 +1,38 @@
-# WordHack 🎮  
+# 🎮 WordHack  
 
-An offline **word puzzle game** built with **HTML, CSS, and JavaScript**.  
-Your goal is to **decode scrambled text** and guess the original word. The game is fun, lightweight, and saves your progress using **localStorage**.  
-
----
-
-## ✨ Features
-- 🕹️ Interactive word puzzle challenges  
-- 💾 Offline support with localStorage  
-- 🏆 High score tracking  
-- 🎨 Clean and responsive design  
-- 🚀 No backend required – just open in a browser  
+**WordHack** is a modern, browser-based **Word Search Puzzle Game** built with **HTML, CSS, and JavaScript**.  
+It allows users to **log in with a username and password**, keeps track of **scores** using `localStorage`, and provides a **fun interactive word search experience**.  
 
 ---
 
-## 🔑 How to Play
-1. Open the game in your browser.  
-2. You’ll see a scrambled or shifted word (e.g., `khoor`).  
-3. Type your guess for the original word (e.g., `hello`).  
-4. Correct guesses increase your score.  
-5. Try to beat your **personal best** — it’s saved automatically in your browser.  
+## ✨ Features  
 
----
+### 🔑 Authentication
+- **Login / Signup** with **username + password**  
+- Validates existing users and prevents duplicate usernames  
+- Password can be **shown/hidden** for convenience  
+- Each user is **uniquely identified**  
 
-## 🛠️ Tech Stack
-- **HTML** – structure  
-- **CSS** – styling and layout  
-- **JavaScript** – game logic + localStorage  
+### 🧩 Word Search Game
+- Randomly generated **2D matrix (grid) of letters**  
+- Words hidden **horizontally, vertically, and diagonally**  
+- Words list displayed alongside the grid  
+- Users can type their guess in an input box to find words  
+- **Score tracking**: correct guesses increase score  
+- **Timer**: complete puzzle within a set time limit  
 
----
+### 📊 Profile Page
+- Shows **username**, **high score**, and **games played**  
+- Tracks **score history** per user  
+- Button to **play game** or **logout**  
 
-
-
+### 💾 Data Persistence
+- Uses **`localStorage`** to store:  
+  ```json
+  {
+    "username": {
+      "password": "****",
+      "highScore": 25,
+      "gamesPlayed": 3
+    }
+  }

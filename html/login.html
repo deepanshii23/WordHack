@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WordHack - Login</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h1>🔐 WordHack</h1>
+    <p class="tagline">Find the words, beat the clock!</p>
+
+    <form onsubmit="loginUser(event)">
+      <input type="text" id="usernameInput" placeholder="Enter Username" required>
+      
+      <div class="password-box">
+        <input type="password" id="passwordInput" placeholder="Enter Password" required>
+        <span class="toggle" onclick="togglePassword()"></span>
+      </div>
+      
+      <button type="submit">Login / Signup</button>
+    </form>
+
+    <p id="loginMessage"></p>
+  </div>
+
+  <script src="/javascript/script.js"></script>
+</body>
+</html>
