@@ -1,0 +1,86 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.auth-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffdf6c;
+}
+
+h2 {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  background: #ffdf6c;
+  color: #333;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ffc107;
+  transform: scale(1.05);
+}
+
+.toggle {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.toggle span {
+  color: #ffdf6c;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form {
+  display: none;
+}
+
+.form.active {
+  display: block;
+}
