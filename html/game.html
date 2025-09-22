@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WordHack - Game</title>
+  <link rel="stylesheet" href="/css/game.css">
+</head>
+<body>
+  <div class="game-container">
+    <header>
+      <h1>🧩 WordHack</h1>
+      <div class="info">
+        <p>User: <span id="username"></span></p>
+        <p>Score: <span id="score">0</span></p>
+        <p>⏳ Time: <span id="timer">60</span>s</p>
+      </div>
+    </header>
+
+    <main>
+      <div id="grid" class="grid"></div>
+
+      <div class="input-section">
+        <input type="text" id="wordInput" placeholder="Enter word...">
+        <button id="checkBtn">Check</button>
+      </div>
+
+      <p id="message"></p>
+    </main>
+
+    <footer>
+      <button onclick="window.location.href='profile.html'">⬅ Back to Profile</button>
+      <button id="logoutBtn">Logout</button>
+    </footer>
+  </div>
+
+  <script src="/javascript/game.js"></script>
+</body>
+</html>
