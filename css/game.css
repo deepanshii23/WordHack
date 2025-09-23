@@ -1,75 +1,92 @@
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to right, black, darkblue);
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  color: white;
 }
 
 .game-container {
-  background: rgba(255,255,255,0.1);
-  padding: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
   border-radius: 15px;
-  width: 500px;
   text-align: center;
-  color: white;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  width: 500px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
 }
 
 header h1 {
   margin-bottom: 10px;
-  color: #00ffcc;
+  color: #ffdf6c;
 }
 
-.info {
+.score-info {
   display: flex;
   justify-content: space-between;
-  font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(8, 40px);
+  grid-template-columns: repeat(10, 40px);
   grid-gap: 5px;
   justify-content: center;
-  margin-bottom: 20px;
+  margin: 15px 0;
 }
 
-.grid div {
-  background: #222;
-  border-radius: 5px;
-  padding: 10px;
+.cell {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
-  color: #00ffcc;
-  text-align: center;
-  font-size: 18px;
-}
-
-.input-section {
-  margin-bottom: 20px;
-}
-
-.input-section input {
-  width: 60%;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-}
-
-.input-section button {
-  padding: 10px 15px;
-  margin-left: 5px;
-  border: none;
-  border-radius: 8px;
-  background: #00ffcc;
   cursor: pointer;
-  font-weight: bold;
+  user-select: none;
 }
 
-#message {
-  font-size: 16px;
-  margin-top: 10px;
+.cell.selected {
+  background: #ffdf6c;
+  color: black;
+}
+
+.cell.found {
+  background: #28a745;
+  color: white;
+}
+
+.words-list {
+  margin: 15px 0;
+  text-align: left;
+}
+
+.words-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.words-list li.found {
+  text-decoration: line-through;
+  color: #28a745;
+}
+
+footer button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #007bff;
+  color: white;
+  transition: 0.3s;
+}
+
+footer button:hover {
+  background: #0056b3;
 }

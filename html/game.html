@@ -10,26 +10,25 @@
   <div class="game-container">
     <header>
       <h1>🧩 WordHack</h1>
-      <div class="info">
-        <p>User: <span id="username"></span></p>
-        <p>Score: <span id="score">0</span></p>
-        <p>⏳ Time: <span id="timer">60</span>s</p>
+      <div class="score-info">
+        <p>👤 <span id="username"></span></p>
+        <p>⭐ Score: <span id="score">0</span></p>
       </div>
     </header>
 
     <main>
       <div id="grid" class="grid"></div>
 
-      <div class="input-section">
-        <input type="text" id="wordInput" placeholder="Enter word...">
-        <button id="checkBtn">Check</button>
+      <div class="words-list">
+        <h3>Find these words:</h3>
+        <ul id="wordsToFind"></ul>
       </div>
 
       <p id="message"></p>
     </main>
 
     <footer>
-      <button onclick="window.location.href='profile.html'">⬅ Back to Profile</button>
+      <button onclick="window.location.href='profile.html'">⬅ Profile</button>
       <button id="logoutBtn">Logout</button>
     </footer>
   </div>

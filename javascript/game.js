@@ -1,82 +1,116 @@
-// Load active user
 const activeUser = localStorage.getItem("activeUser");
 if (!activeUser) {
   alert("Please login first!");
   window.location.href = "login.html";
 }
-const userData = JSON.parse(localStorage.getItem(activeUser));
-
-// DOM elements
 document.getElementById("username").textContent = activeUser;
-let score = userData.score || 0;
-document.getElementById("score").textContent = score;
 
-const gridSize = 8;
-const gridElement = document.getElementById("grid");
+let score = 0;
+const gridSize = 10;
+let grid = [];
+let words = ["CODE", "JAVA", "HTML", "CSS", "HACK"];
+let foundWords = new Set();
+let selectedCells = [];
 
-// Generate random matrix
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let matrix = [];
-
+// Build grid
 function generateGrid() {
-  matrix = [];
-  gridElement.innerHTML = "";
-  for (let i = 0; i < gridSize; i++) {
-    matrix[i] = [];
-    for (let j = 0; j < gridSize; j++) {
-      const char = letters[Math.floor(Math.random() * letters.length)];
-      matrix[i][j] = char;
-      const cell = document.createElement("div");
-      cell.textContent = char;
-      gridElement.appendChild(cell);
+  // Fill grid with random letters
+  grid = Array.from({ length: gridSize }, () =>
+    Array.from({ length: gridSize }, () =>
+      String.fromCharCode(65 + Math.floor(Math.random() * 26))
+    )
+  );
+
+  // Place words horizontally
+  words.forEach(word => {
+    const row = Math.floor(Math.random() * gridSize);
+    const col = Math.floor(Math.random() * (gridSize - word.length));
+    for (let i = 0; i < word.length; i++) {
+      grid[row][col + i] = word[i];
     }
+  });
+
+  renderGrid();
+  renderWordList();
+}
+
+function renderGrid() {
+  const gridContainer = document.getElementById("grid");
+  gridContainer.innerHTML = "";
+
+  grid.forEach((row, r) => {
+    row.forEach((letter, c) => {
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      cell.textContent = letter;
+      cell.dataset.row = r;
+      cell.dataset.col = c;
+
+      // Mouse events
+      cell.addEventListener("mousedown", () => startSelection(cell));
+      cell.addEventListener("mouseenter", (e) => dragSelection(cell, e));
+      cell.addEventListener("mouseup", () => endSelection());
+
+      gridContainer.appendChild(cell);
+    });
+  });
+}
+
+function renderWordList() {
+  const list = document.getElementById("wordsToFind");
+  list.innerHTML = "";
+  words.forEach(word => {
+    const li = document.createElement("li");
+    li.textContent = word;
+    li.id = "word-" + word;
+    list.appendChild(li);
+  });
+}
+
+// Selection logic
+let isSelecting = false;
+
+function startSelection(cell) {
+  isSelecting = true;
+  selectedCells = [cell];
+  cell.classList.add("selected");
+}
+
+function dragSelection(cell, event) {
+  if (!isSelecting) return;
+  if (!selectedCells.includes(cell)) {
+    selectedCells.push(cell);
+    cell.classList.add("selected");
   }
 }
-generateGrid();
 
-// Timer
-let timeLeft = 60;
-const timerElement = document.getElementById("timer");
+function endSelection() {
+  if (!isSelecting) return;
+  isSelecting = false;
 
-const timer = setInterval(() => {
-  timeLeft--;
-  timerElement.textContent = timeLeft;
-  if (timeLeft <= 0) {
-    clearInterval(timer);
-    endGame();
-  }
-}, 1000);
+  const word = selectedCells.map(c => c.textContent).join("");
+  checkWord(word);
 
-// Word Check
-const validWords = ["CAT", "DOG", "CODE", "HACK", "WORD", "GAME"]; // temp words
+  selectedCells.forEach(c => c.classList.remove("selected"));
+  selectedCells = [];
+}
 
-document.getElementById("checkBtn").addEventListener("click", () => {
-  const input = document.getElementById("wordInput").value.toUpperCase();
-  if (!input) return;
-
-  if (validWords.includes(input)) {
+function checkWord(word) {
+  if (words.includes(word) && !foundWords.has(word)) {
+    foundWords.add(word);
     score += 10;
     document.getElementById("score").textContent = score;
-    showMessage("✅ Correct! +10 points", "green");
+
+    // Mark grid cells
+    selectedCells.forEach(c => c.classList.add("found"));
+
+    // Mark word list
+    document.getElementById("word-" + word).classList.add("found");
+
+    showMessage(`🎉 Found "${word}"!`, "green");
   } else {
-    showMessage("❌ Not found", "red");
+    showMessage("❌ Not a valid word!", "red");
   }
-
-  document.getElementById("wordInput").value = "";
-});
-
-// Logout
-document.getElementById("logoutBtn").addEventListener("click", () => {
-  localStorage.removeItem("activeUser");
-  window.location.href = "login.html";
-});
-
-// End Game
-function endGame() {
-  alert(`⏳ Time's up! Final Score: ${score}`);
-  userData.score = score;
-  localStorage.setItem(activeUser, JSON.stringify(userData));
-  window.location.href = "profile.html";
 }
 
 function showMessage(msg, color) {
@@ -84,3 +118,12 @@ function showMessage(msg, color) {
   message.textContent = msg;
   message.style.color = color;
 }
+
+// Logout
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  localStorage.removeItem("activeUser");
+  window.location.href = "login.html";
+});
+
+// Init
+generateGrid();
