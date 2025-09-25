@@ -2,31 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WordHack - Profile</title>
+  <title>WordHack — Profile</title>
   <link rel="stylesheet" href="/css/profile.css">
 </head>
 <body>
   <div class="profile-container">
-    <h1>👋 Welcome back, <span id="welcomeUser"></span>!</h1>
+    <h1>🎮 WordHack Profile</h1>
 
-    <div class="avatar">
-      <img src="/assets/user.jpg" alt="User Avatar">
-    </div>
-
-    <div class="stats">
-      <div class="stat-card">
-        <h2>⭐ Current Score</h2>
-        <p id="profileScore">0</p>
+    <div class="profile-card">
+      <div class="avatar">
+        <img id="profile-pic" src="/assets/user.jpg" alt="Profile Picture">
       </div>
-      <div class="stat-card">
-        <h2>🏆 High Score</h2>
-        <p id="profileHighScore">0</p>
+
+      <div class="profile-info">
+        <p>👤 <strong>Username:</strong> <span id="username"></span></p>
+        <p>⭐ <strong>Last Score:</strong> <span id="lastScore">0</span></p>
+        <p>🏆 <strong>High Score:</strong> <span id="highScore">0</span></p>
+        <p>🕹️ <strong>Total Games:</strong> <span id="totalGames">0</span></p>
       </div>
     </div>
 
-    <div class="buttons">
-      <button id="playBtn">▶️ Play Game</button>
-      <button id="logoutBtn">🚪 Logout</button>
+    <div class="btn-group">
+      <button id="play-btn">▶️ Play Game</button>
+      <button id="logout-btn">🚪 Logout</button>
     </div>
   </div>
 

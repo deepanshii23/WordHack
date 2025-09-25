@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WordHack - Game</title>
+  <meta charset="utf-8" />
+  <title>WordHack — Game</title>
   <link rel="stylesheet" href="/css/game.css">
 </head>
 <body>
   <div class="game-container">
     <header>
-      <h1>🧩 WordHack</h1>
-      <div class="score-info">
-        <p>👤 <span id="username"></span></p>
-        <p>⭐ Score: <span id="score">0</span></p>
+      <h1>WordHack</h1>
+      <div class="game-info">
+        <div id="timer">⏱️ 01:00</div>
+        <div id="words-left">Words Left: 0</div>
+        <div>⭐ Score: <span id="score">0</span></div>
+        <div class="btn-group">
+          <button id="restart-btn">🔄 Restart</button>
+          <button id="exit-btn">🚪 Exit</button>
+        </div>
       </div>
     </header>
 
     <main>
-      <div id="grid" class="grid"></div>
+      <section id="grid" class="grid" aria-label="word grid"></section>
 
-      <div class="words-list">
-        <h3>Find these words:</h3>
-        <ul id="wordsToFind"></ul>
-      </div>
-
-      <p id="message"></p>
+      <aside>
+        <h2>Words to Find</h2>
+        <ul id="word-list"></ul>
+      </aside>
     </main>
-
-    <footer>
-      <button onclick="window.location.href='profile.html'">⬅ Profile</button>
-      <button id="logoutBtn">Logout</button>
-    </footer>
   </div>
 
   <script src="/javascript/game.js"></script>

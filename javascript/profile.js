@@ -1,24 +1,29 @@
-// Check if user is logged in
-const activeUser = localStorage.getItem("activeUser");
+window.onload = () => {
+    const activeUser = localStorage.getItem("activeUser");
+    if (!activeUser) {
+        alert("No active user found! Please login.");
+        window.location.href = "login.html";
+        return;
+    }
 
-if (!activeUser) {
-  window.location.href = "login.html";
-} else {
-  const userData = JSON.parse(localStorage.getItem(activeUser));
+    const userData = JSON.parse(localStorage.getItem(activeUser));
 
-  // Display info
-  document.getElementById("welcomeUser").textContent = userData.username;
-  document.getElementById("profileScore").textContent = userData.score || 0;
-  document.getElementById("profileHighScore").textContent = userData.highScore || 0;
-}
+    document.getElementById("username").textContent = activeUser;
+    document.getElementById("lastScore").textContent = userData.lastScore || 0;
+    document.getElementById("highScore").textContent = userData.highScore || 0;
+    document.getElementById("totalGames").textContent = userData.totalGames || 0;
 
-// Play Game button
-document.getElementById("playBtn").addEventListener("click", () => {
-  window.location.href = "game.html";
-});
+    // Set profile picture if user saved one
+    if(userData.profilePic) {
+        document.getElementById("profile-pic").src = userData.profilePic;
+    }
 
-// Logout button
-document.getElementById("logoutBtn").addEventListener("click", () => {
-  localStorage.removeItem("activeUser");
-  window.location.href = "login.html";
-});
+    document.getElementById("logout-btn").addEventListener("click", () => {
+        localStorage.removeItem("activeUser");
+        window.location.href = "login.html";
+    });
+
+    document.getElementById("play-btn").addEventListener("click", () => {
+        window.location.href = "game.html";
+    });
+};
