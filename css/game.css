@@ -1,7 +1,10 @@
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+   background-image: url(../assets/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); */
   color: white;
   display: flex;
   justify-content: center;
@@ -26,8 +29,8 @@ header {
 
 h1 {
   font-size: 2.4rem;
-  color: #ffdf6c;
-  text-shadow: 0 0 12px #ffdf6c;
+  color: #0a0107d8;
+  text-shadow: 0 0 12px #fbfaff;
 }
 
 .game-info {
@@ -41,12 +44,12 @@ h1 {
 #timer {
   font-size: 20px;
   font-weight: bold;
-  color: #ff4d6d;
+  color:white;
 }
 
 #words-left {
   font-size: 18px;
-  color: #90e0ef;
+  color: white;
 }
 
 .btn-group button {
@@ -54,14 +57,14 @@ h1 {
   font-size: 15px;
   cursor: pointer;
   margin-left: 5px;
-  background: #0077b6;
-  color: white;
+  background: #ad7480;
+  color: rgb(240, 250, 251);
   border: none;
   border-radius: 6px;
   transition: 0.3s;
 }
 .btn-group button:hover {
-  background: #023e8a;
+  background: #8f287c;
 }
 
 main {
@@ -90,18 +93,18 @@ main {
   cursor: pointer;
   transition: 0.2s;
   user-select: none;
-  color: #fff;
+  color: #f9f6f6;
 }
 
 .grid div.selected {
-  background: #ffdf6c;
+  background: #e450c4;
   color: #000;
-  box-shadow: 0 0 12px #ffdf6c;
+  box-shadow: 0 0 12px #cfa1c6;
 }
 
 .grid div.found {
-  background: #90be6d;
-  color: #000;
+  background: #6f245d;
+  color: #eae3e3;
 }
 
 aside {
@@ -116,5 +119,5 @@ aside {
 
 #word-list li.found {
   text-decoration: line-through;
-  color: #90be6d;
+  color: #ec6fda;
 }

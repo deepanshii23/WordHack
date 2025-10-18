@@ -1,7 +1,10 @@
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+   background-image: url(../assets/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); */
   color: white;
   display: flex;
   justify-content: center;
@@ -27,9 +30,9 @@ body {
 
 h1 {
   font-size: 2.4rem;
-  color: #ffdf6c;
+  color: #10020f;
   margin-bottom: 25px;
-  text-shadow: 0 0 12px #ffdf6c;
+  text-shadow: 0 0 12px #f1f0ec;
 }
 
 /* Profile Card */
@@ -55,26 +58,26 @@ h1 {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 4px solid #ffdf6c;
+  border: 4px solid #aa6498;
   object-fit: cover;
   transition: 0.3s;
 }
 
 .avatar img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px #ffdf6c;
+  box-shadow: 0 0 15px #10020f;
 }
 
 /* Profile Info */
 .profile-info p {
   font-size: 1.2rem;
   margin: 10px 0;
-  color: #90e0ef;
+  color: #250a2b;
 }
 
 .profile-info span {
   font-weight: bold;
-  color: #ffdf6c;
+  color: #ede7ec;
 }
 
 /* Buttons */
@@ -90,13 +93,13 @@ h1 {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  background: #0077b6;
+  background: #2c1438;
   color: white;
   transition: 0.3s;
 }
 
 .btn-group button:hover {
-  background: #023e8a;
+  background: #0e010b;
   transform: scale(1.08);
   box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
